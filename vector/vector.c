@@ -3,11 +3,10 @@
 #include <stdint.h>
 #include <assert.h>
 #include <limits.h>
-#include <stdbool.h>
 
-vector* init(uint32_t init_size)
+vector* init(uint32_t init_size, void (*destroy)(void**))
 {
-	assert(init_size == 0 || init_size <= UINT32_MAX / 8);
+	assert(init_size != 0);
 
 	vector* new_vector = (vector*)malloc(sizeof(vector));
 	
@@ -19,6 +18,7 @@ vector* init(uint32_t init_size)
 
 	new_vector->capacity = init_size;
 	new_vector->elements = 0;
+	new_vector->destructor = destroy;
 	return new_vector;
 }
 
@@ -94,5 +94,39 @@ void insert(vector* current_vector, const void* element, uint32_t index)
 
 	current_vector->arr[index] = element;
 	(current_vector->elements)++;
+	return;
+}
+
+void* pop(vector* current_vector)
+{
+	assert(current_vector != NULL || current_vector->arr != NULL);
+	
+	void* element = current_vector->arr[--(current_vector->elements)];
+	
+	current_vector->arr[(current_vector->elements) + 1] = NULL;
+	return element;
+}
+
+void* remove(vector* current_vector, uint32_t index)
+{
+	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(index < (current_vector->elements) - 1);
+
+	void* element = current_vector->arr[index];
+
+	for (int i = index; i < (current_vector->elements) - 1; i++)
+	{
+		current_vector->arr[i] = current_vector->arr[i + 1];
+	}
+
+	current_vector->arr[--(current_vector->elements)] = NULL;
+	return element;
+}
+
+void destroy(vector* current_vector)
+{
+	assert(current_vector != NULL || current_vector->arr != NULL);
+	current_vector->destructor(current_vector->arr);
+	free(current_vector);
 	return;
 }
