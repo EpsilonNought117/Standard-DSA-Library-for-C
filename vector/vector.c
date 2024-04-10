@@ -24,6 +24,8 @@ vector* init(uint32_t init_size)
 
 void resize(vector* current_vector)
 {
+	assert(current_vector != NULL);
+
 	if (current_vector->capacity == UINT32_MAX)
 	{
 		assert(current_vector->capacity <= UINT32_MAX);
@@ -44,6 +46,8 @@ void resize(vector* current_vector)
 
 void shrink_to_fit(vector* current_vector)
 {
+	assert(current_vector != NULL);
+
 	if (current_vector->capacity == current_vector->elements)
 	{
 		return;
@@ -57,5 +61,38 @@ void shrink_to_fit(vector* current_vector)
 	temp_ptr_shrunk_arr = NULL;
 	current_vector->capacity = current_vector->elements;
 
-	return
+	return;
+}
+
+void push(vector* current_vector, const void* element)
+{
+	assert(current_vector != NULL || element != NULL || current_vector->arr != NULL);
+
+	if (current_vector->elements == current_vector->capacity)
+	{
+		resize(current_vector);
+	}
+
+	current_vector->arr[(current_vector->elements)++] = element;
+	return;
+}
+
+void insert(vector* current_vector, const void* element, uint32_t index)
+{
+	assert(current_vector != NULL || element != NULL || current_vector->arr != NULL);
+	assert(index < current_vector->elements);
+
+	if (current_vector->elements == current_vector->capacity)
+	{
+		resize(current_vector);
+	}
+
+	for (int i = current_vector->elements; i > index; i--)
+	{
+		current_vector->arr[i] = current_vector->arr[i - 1];
+	}
+
+	current_vector->arr[index] = element;
+	(current_vector->elements)++;
+	return;
 }
