@@ -44,5 +44,18 @@ void resize(vector* current_vector)
 
 void shrink_to_fit(vector* current_vector)
 {
-	
+	if (current_vector->capacity == current_vector->elements)
+	{
+		return;
+	}
+
+	void** temp_ptr_shrunk_arr = (void**)realloc((void*)current_vector->arr, (size_t)(sizeof(void**) * (current_vector->elements));
+
+	assert(temp_ptr_shrunk_arr != NULL);
+
+	current_vector->arr = temp_ptr_shrunk_arr;
+	temp_ptr_shrunk_arr = NULL;
+	current_vector->capacity = current_vector->elements;
+
+	return
 }
