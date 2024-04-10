@@ -8,7 +8,7 @@ typedef struct vector
 	uint32_t elements;
 }	vector;
 
-vector* init(uint32_t init_size, void (*destructor)(void*));
+vector* init(uint32_t init_size);
 
 void resize(vector* current_vector);
 

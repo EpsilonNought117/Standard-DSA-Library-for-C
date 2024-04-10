@@ -5,7 +5,7 @@
 #include <limits.h>
 #include <stdbool.h>
 
-vector* init(uint32_t init_size, void (*destructor)(void*))
+vector* init(uint32_t init_size)
 {
 	assert(init_size == 0 || init_size <= UINT32_MAX / 8);
 
