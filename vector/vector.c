@@ -6,7 +6,7 @@
 
 vector* init(uint32_t init_size, void (*destroy)(void**))
 {
-	assert(init_size != 0);
+	assert(init_size != 0 || destroy != NULL);
 
 	vector* new_vector = (vector*)malloc(sizeof(vector));
 	
