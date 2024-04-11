@@ -20,6 +20,8 @@ circular_queue* init_queue(uint32_t init_size, void (*destroy)(void**))
 	new_queue->capacity = init_size;
 	new_queue->elements = 0;
 	new_queue->next_remove_idx = 0;
+	new_queue->destructor = destroy;
+
 	return new_queue;
 }
 
@@ -68,4 +70,44 @@ void enqueue(circular_queue* queue, const void* element)
 {
 	assert(queue != NULL || queue->arr != NULL || element != NULL);
 
+	if (queue->elements == queue->capacity)
+	{
+		resize(queue);
+	}
+
+	queue->arr[(queue->next_remove_idx + queue->elements) % (queue->capacity)] = element;
+	(queue->elements)++;
+	return;
+}
+
+void* dequeue(circular_queue* queue)
+{
+	assert(queue != NULL || queue->arr != NULL);
+
+	void* element = queue->arr[queue->next_remove_idx];
+	queue->arr[queue->next_remove_idx] = NULL;
+	(queue->elements)--;
+	return element;
+}
+
+void* peek_front(circular_queue* queue)
+{
+	assert(queue != NULL || queue->arr != NULL);
+
+	return (void*)queue->arr[queue->next_remove_idx];
+}
+
+void* peek_end(circular_queue* queue)
+{
+	assert(queue != NULL || queue->arr != NULL);
+
+	return (void*)queue->arr[(queue->next_remove_idx + queue->elements) % queue->capacity];
+}
+
+void destroy(circular_queue* queue)
+{
+	assert(queue != NULL || queue->destructor != NULL);
+	queue->destructor(queue->arr);
+	free(queue);
+	return;
 }

@@ -116,6 +116,14 @@ void* remove(vector* current_vector, uint32_t index)
 	return element;
 }
 
+void* atIndex(vector* current_vector, uint32_t index)
+{
+	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(index < current_vector->elements);
+	
+	return (void*)current_vector->arr[index];
+}
+
 void destroy(vector* current_vector)
 {
 	assert(current_vector != NULL || current_vector->arr != NULL);

@@ -22,6 +22,10 @@ void enqueue(circular_queue* queue, const void* element);
 
 void* dequeue(circular_queue* queue);
 
+void* peek_front(circular_queue* queue);
+
+void* peek_end(circular_queue* queue);
+
 void destroy(circular_queue* queue);
 
 #endif
