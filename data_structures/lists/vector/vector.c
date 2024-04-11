@@ -124,10 +124,18 @@ void* atIndex(vector* current_vector, uint32_t index)
 	return (void*)current_vector->arr[index];
 }
 
+void swap(const void* element_a, const void* element_b)
+{
+	void* temp = element_a;
+	element_a = element_b;
+	element_b = temp;
+	return;
+}
+
 void destroy(vector* current_vector)
 {
 	assert(current_vector != NULL || current_vector->arr != NULL);
-	current_vector->destructor(current_vector->arr);
+	current_vector->destructor((void*)current_vector->arr);
 	free(current_vector);
 	return;
 }
