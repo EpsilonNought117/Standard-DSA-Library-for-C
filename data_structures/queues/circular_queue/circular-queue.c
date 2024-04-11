@@ -25,7 +25,7 @@ circular_queue* init_queue(uint32_t init_size, void (*destroy)(void**))
 	return new_queue;
 }
 
-void resize(circular_queue* queue)
+void resize_queue(circular_queue* queue)
 {
 	assert(queue != NULL);
 	assert(queue->capacity < UINT32_MAX);
@@ -48,7 +48,7 @@ void resize(circular_queue* queue)
 	return;
 }
 
-void shrink_to_fit(circular_queue* queue)
+void shrink_queue(circular_queue* queue)
 {
 	assert(queue != NULL);
 
@@ -72,7 +72,7 @@ void enqueue(circular_queue* queue, const void* element)
 
 	if (queue->elements == queue->capacity)
 	{
-		resize(queue);
+		resize_queue(queue);
 	}
 
 	queue->arr[(queue->next_remove_idx + queue->elements) % (queue->capacity)] = element;
