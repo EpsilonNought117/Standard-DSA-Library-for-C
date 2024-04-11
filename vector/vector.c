@@ -3,8 +3,9 @@
 #include <stdint.h>
 #include <assert.h>
 #include <limits.h>
+#include <stdio.h>
 
-vector* init(uint32_t init_size, void (*destroy)(void**))
+vector* init_vector(uint32_t init_size, void (*destroy)(void**))
 {
 	assert(init_size != 0 || destroy != NULL);
 
@@ -12,7 +13,7 @@ vector* init(uint32_t init_size, void (*destroy)(void**))
 	
 	assert(new_vector != NULL);
 
-	new_vector->arr = (void**)calloc((size_t)(init_size), (size_t)sizeof(void*));
+	new_vector->arr = (void**)calloc((init_size), sizeof(void*));
 
 	assert(new_vector->arr != NULL);
 
@@ -25,22 +26,16 @@ vector* init(uint32_t init_size, void (*destroy)(void**))
 void resize(vector* current_vector)
 {
 	assert(current_vector != NULL);
-
-	if (current_vector->capacity == UINT32_MAX)
-	{
-		assert(current_vector->capacity <= UINT32_MAX);
-	}
+	assert(current_vector->capacity < UINT32_MAX);
 
 	uint32_t new_capacity = (current_vector->capacity > UINT32_MAX / 2 ? UINT32_MAX : (current_vector->capacity) * 2);
 
-	void** temp_ptr_resized_arr = (void**)realloc((void*)current_vector->arr, (size_t)(sizeof(void**) * new_capacity);
+	void** temp_ptr_resized_arr = (void**)realloc(current_vector->arr, sizeof(void**) * new_capacity);
 
 	assert(temp_ptr_resized_arr != NULL);
 
 	current_vector->arr = temp_ptr_resized_arr;
-	temp_ptr_resized_arr = NULL;
 	current_vector->capacity = new_capacity;
-
 	return;
 }
 
@@ -53,14 +48,12 @@ void shrink_to_fit(vector* current_vector)
 		return;
 	}
 
-	void** temp_ptr_shrunk_arr = (void**)realloc((void*)current_vector->arr, (size_t)(sizeof(void**) * (current_vector->elements));
+	void** temp_ptr_shrunk_arr = (void**)realloc(current_vector->arr, sizeof(void**) * current_vector->elements);
 
 	assert(temp_ptr_shrunk_arr != NULL);
 
 	current_vector->arr = temp_ptr_shrunk_arr;
-	temp_ptr_shrunk_arr = NULL;
 	current_vector->capacity = current_vector->elements;
-
 	return;
 }
 
@@ -87,7 +80,7 @@ void insert(vector* current_vector, const void* element, uint32_t index)
 		resize(current_vector);
 	}
 
-	for (int i = current_vector->elements; i > index; i--)
+	for (uint32_t i = current_vector->elements; i > index; i--)
 	{
 		current_vector->arr[i] = current_vector->arr[i - 1];
 	}
@@ -114,7 +107,7 @@ void* remove(vector* current_vector, uint32_t index)
 
 	void* element = current_vector->arr[index];
 
-	for (int i = index; i < (current_vector->elements) - 1; i++)
+	for (uint32_t i = index; i < (current_vector->elements) - 1; i++)
 	{
 		current_vector->arr[i] = current_vector->arr[i + 1];
 	}

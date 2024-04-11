@@ -10,7 +10,7 @@ typedef struct vector
 	void (*destructor)(void**);
 }	vector;
 
-vector* init(uint32_t init_size, void (*destroy)(void**));
+vector* init_vector(uint32_t init_size, void (*destroy)(void**));
 
 void resize(vector* current_vector);
 
@@ -25,4 +25,5 @@ void* pop(vector* current_vector);
 void* remove(vector* current_vector, uint32_t index);
 
 void destroy(vector* current_vector);   // user defined destroy function that frees the array of void pointers
+
 #endif
