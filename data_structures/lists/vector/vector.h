@@ -24,7 +24,7 @@ void* pop(vector* current_vector);
 
 void* remove(vector* current_vector, uint32_t index);
 
-void* atIndex(vector* current_vector, uint32_t index);
+const void* atIndex(vector* current_vector, uint32_t index);
 
 void swap(const void* element_a, const void* element_b);
 

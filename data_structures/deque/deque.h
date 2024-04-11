@@ -26,9 +26,10 @@ void* dequeue_front(deque* deque);
 
 void* dequeue_back(deque* deque);
 
-void* peek_front_deque(deque* deque);
+const void* peek_front_deque(deque* deque);
 
-void* peek_back_deque(deque* deque);
+const void* peek_back_deque(deque* deque);
 
 void destroy(deque* deque);
+
 #endif

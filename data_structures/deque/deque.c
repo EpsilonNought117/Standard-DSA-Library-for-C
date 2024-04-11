@@ -131,14 +131,18 @@ void* dequeue_back(deque* deque)
 	return element;
 }
 
-void* peek_front_deque(deque* deque)
+const void* peek_front_deque(deque* deque)
 {
-	return (void*)(deque->arr[deque->front_idx]);
+	assert(deque != NULL || deque->arr != NULL);
+
+	return (const void*)(deque->arr[deque->front_idx]);
 }
 
-void* peek_back_deque(deque* deque)
+const void* peek_back_deque(deque* deque)
 {
-	return (void*)(deque->arr[deque->back_idx]);
+	assert(deque != NULL || deque->arr != NULL);
+
+	return (const void*)(deque->arr[deque->back_idx]);
 }
 
 void destroy(deque* current_deque)

@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include <assert.h>
 #include <limits.h>
-#include <stdio.h>
 
 vector* init_vector(uint32_t init_size, void (*destroy)(void**))
 {
@@ -116,12 +115,12 @@ void* remove(vector* current_vector, uint32_t index)
 	return element;
 }
 
-void* atIndex(vector* current_vector, uint32_t index)
+const void* atIndex(vector* current_vector, uint32_t index)
 {
 	assert(current_vector != NULL || current_vector->arr != NULL);
 	assert(index < current_vector->elements);
 	
-	return (void*)current_vector->arr[index];
+	return (const void*)current_vector->arr[index];
 }
 
 void swap(const void* element_a, const void* element_b)
