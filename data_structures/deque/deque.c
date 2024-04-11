@@ -145,7 +145,7 @@ const void* peek_back_deque(deque* deque)
 	return (const void*)(deque->arr[deque->back_idx]);
 }
 
-void destroy(deque* current_deque)
+void destroy_deque(deque* current_deque)
 {
 	assert(current_deque != NULL || current_deque->arr != NULL);
 	current_deque->destructor((void*)current_deque->arr);

@@ -12,22 +12,22 @@ typedef struct vector
 
 vector* init_vector(uint32_t init_size, void (*destroy)(void**));
 
-void resize(vector* current_vector);
+void resize_vector(vector* current_vector);
 
-void shrink_to_fit(vector* current_vector);
+void shrink_vector(vector* current_vector);
 
-void push(vector* current_vector, const void* element);
+void push_vector(vector* current_vector, const void* element);
 
-void insert(vector* current_vector, const void* element, uint32_t index);
+void insert_vector(vector* current_vector, const void* element, uint32_t index);
 
-void* pop(vector* current_vector);
+void* pop_vector(vector* current_vector);
 
-void* remove(vector* current_vector, uint32_t index);
+void* remove_vector(vector* current_vector, uint32_t index);
 
 const void* atIndex(vector* current_vector, uint32_t index);
 
 void swap(const void* element_a, const void* element_b);
 
-void destroy(vector* current_vector);   // user defined destroy function that frees the array of void pointers
+void destroy_vector(vector* current_vector);   // user defined destroy function that frees the array of void pointers
 
 #endif

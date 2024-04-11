@@ -30,6 +30,6 @@ const void* peek_front_deque(deque* deque);
 
 const void* peek_back_deque(deque* deque);
 
-void destroy(deque* deque);
+void destroy_deque(deque* deque);
 
 #endif
