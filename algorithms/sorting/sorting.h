@@ -20,9 +20,14 @@ void selectionSort(vector* vector, result (*comparator)(const void*, const void*
 void insertionSort(vector* vector, result(*comparator)(const void*, const void*));
 
 void binaryInsertionSort(vector* vector, result(*comparator)(const void*, const void*));
-uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index);
 
-void mergeSort(vector* vector, result(*comparator)(const void*, const void*));
+static uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index);
+
+void mergeSort(vector* vector, result(*comparator(const void*, const void*));
+
+static void mergeSortRecursive(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
+
+static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t back_idx, result(*comparator)(const  void*, const void*));
 
 void heapSort(vector* vector, result(*comparator)(const void*, const void*));
 

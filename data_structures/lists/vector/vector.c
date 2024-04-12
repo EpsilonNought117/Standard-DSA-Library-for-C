@@ -6,7 +6,7 @@
 
 vector* init_vector(uint32_t init_size, void (*destroy)(void**))
 {
-	assert(init_size != 0 || destroy != NULL);
+	assert(init_size != 0 && destroy != NULL);
 
 	vector* new_vector = (vector*)malloc(sizeof(vector));
 	
@@ -58,7 +58,7 @@ void shrink_vector(vector* current_vector)
 
 void push_vector(vector* current_vector, const void* element)
 {
-	assert(current_vector != NULL || element != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && element != NULL && current_vector->arr != NULL);
 
 	if (current_vector->elements == current_vector->capacity)
 	{
@@ -71,7 +71,7 @@ void push_vector(vector* current_vector, const void* element)
 
 void insert_vector(vector* current_vector, const void* element, uint32_t index)
 {
-	assert(current_vector != NULL || element != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && element != NULL && current_vector->arr != NULL);
 	assert(index < current_vector->elements);
 
 	if (current_vector->elements == current_vector->capacity)
@@ -91,7 +91,7 @@ void insert_vector(vector* current_vector, const void* element, uint32_t index)
 
 void* pop_vector(vector* current_vector)
 {
-	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && current_vector->arr != NULL);
 	
 	void* element = current_vector->arr[--(current_vector->elements)];
 	
@@ -101,7 +101,7 @@ void* pop_vector(vector* current_vector)
 
 void* remove_vector(vector* current_vector, uint32_t index)
 {
-	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && current_vector->arr != NULL);
 	assert(index < (current_vector->elements) - 1);
 
 	void* element = current_vector->arr[index];
@@ -117,7 +117,7 @@ void* remove_vector(vector* current_vector, uint32_t index)
 
 const void* atIndex(vector* current_vector, uint32_t index)
 {
-	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && current_vector->arr != NULL);
 	assert(index < current_vector->elements);
 	
 	return (const void*)current_vector->arr[index];
@@ -133,7 +133,7 @@ void swap(const void* element_a, const void* element_b)
 
 void destroy_vector(vector* current_vector)
 {
-	assert(current_vector != NULL || current_vector->arr != NULL);
+	assert(current_vector != NULL && current_vector->arr != NULL);
 	current_vector->destructor((void*)current_vector->arr);
 	free(current_vector);
 	return;

@@ -7,7 +7,7 @@
 
 deque* init_deque(uint32_t init_size, void (*destroy)(void**))
 {
-	assert(init_size != 0 || destroy != NULL);
+	assert(init_size != 0 && destroy != NULL);
 
 	deque* new_deque = (deque*)malloc(sizeof(deque));
 
@@ -51,7 +51,7 @@ void resize_deque(deque* deque)
 
 void shrink_deque(deque* deque)
 {
-	assert(deque != NULL || deque->arr != NULL);
+	assert(deque != NULL && deque->arr != NULL);
 	
 	if (deque->elements == deque->capacity)
 	{
@@ -69,7 +69,7 @@ void shrink_deque(deque* deque)
 
 void enqueue_front(deque* deque, const void* element)
 {
-	assert(deque != NULL || deque->arr != NULL || element != NULL);
+	assert(deque != NULL && deque->arr != NULL && element != NULL);
 
 	if (deque->capacity == deque->elements)
 	{
@@ -87,7 +87,7 @@ void enqueue_front(deque* deque, const void* element)
 
 void enqueue_back(deque* deque, const void* element)
 {
-	assert(deque != NULL || deque->arr != NULL || element != NULL);
+	assert(deque != NULL && deque->arr != NULL && element != NULL);
 
 	if (deque->capacity == deque->elements)
 	{
@@ -105,7 +105,7 @@ void enqueue_back(deque* deque, const void* element)
 
 void* dequeue_front(deque* deque)
 {
-	assert(deque != NULL || deque->arr != NULL);
+	assert(deque != NULL && deque->arr != NULL);
 
 	uint32_t new_front_index = (deque->front_idx + deque->capacity + 1) % (deque->capacity);
 
@@ -119,7 +119,7 @@ void* dequeue_front(deque* deque)
 
 void* dequeue_back(deque* deque)
 {
-	assert(deque != NULL || deque->arr != NULL);
+	assert(deque != NULL && deque->arr != NULL);
 
 	uint32_t new_back_index = (deque->back_idx + deque->capacity + 1) % (deque->capacity);
 
@@ -133,21 +133,21 @@ void* dequeue_back(deque* deque)
 
 const void* peek_front_deque(deque* deque)
 {
-	assert(deque != NULL || deque->arr != NULL);
+	assert(deque != NULL && deque->arr != NULL);
 
 	return (const void*)(deque->arr[deque->front_idx]);
 }
 
 const void* peek_back_deque(deque* deque)
 {
-	assert(deque != NULL || deque->arr != NULL);
+	assert(deque != NULL && deque->arr != NULL);
 
 	return (const void*)(deque->arr[deque->back_idx]);
 }
 
 void destroy_deque(deque* current_deque)
 {
-	assert(current_deque != NULL || current_deque->arr != NULL);
+	assert(current_deque != NULL && current_deque->arr != NULL);
 	current_deque->destructor((void*)current_deque->arr);
 	free(current_deque);
 	return;

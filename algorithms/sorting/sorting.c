@@ -9,7 +9,7 @@
 
 void bubbleSort(vector* vector, result(*comparator)(const void*, const void*))
 {
-	assert(vector != NULL || vector->arr != NULL || comparator != NULL);
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
 	for (uint32_t i = 0; i < vector->elements; i++)
 	{
@@ -37,7 +37,7 @@ void bubbleSort(vector* vector, result(*comparator)(const void*, const void*))
 
 void selectionSort(vector* vector, result(*comparator)(const void*, const void*))
 {
-	assert(vector != NULL || vector->arr != NULL || comparator != NULL);
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
 	for (uint32_t i = 0; i < vector->elements; i++)
 	{
@@ -61,7 +61,7 @@ void selectionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 void insertionSort(vector* vector, result(*comparator)(const void*, const void*))
 {
-	assert(vector != NULL || vector->arr != NULL || comparator != NULL);
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
 	for (uint32_t i = 1; i < vector->elements; i++)
 	{
@@ -84,7 +84,7 @@ void insertionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 void binaryInsertionSort(vector* vector, result(*comparator)(const  void*, const void*))
 {
-	assert(vector != NULL || vector->arr != NULL || comparator != NULL);
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
 	for (uint32_t i = 1; i < vector->elements; i++)
 	{
@@ -106,7 +106,7 @@ void binaryInsertionSort(vector* vector, result(*comparator)(const  void*, const
 
 // BINARY INSERTION SORT HELPER FUNCTION
 
-uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index)
+static uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index)
 {
 	uint32_t insert_index = 0;
 
@@ -128,4 +128,84 @@ uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(
 	return insert_index + 1;
 }
 
-//
+// MERGE SORT WRAPPER FUNCTION
+
+void mergeSort(vector* vector, result(*comparator)(const void*, const void*))
+{
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
+
+	mergeSortRecursive(vector->arr, 0, vector->elements - 1, comparator);
+	return;
+}
+
+// MERGE SORT RECURSIVE HELPER FUNCTION
+
+static void mergeSortRecursive(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+{
+	if (front_idx == back_idx)
+	{
+		return;
+	}
+
+	uint32_t mid_idx = front_idx + ((back_idx - front_idx) >> 1);
+
+	mergeSortRecursive(arr, front_idx, mid_idx, comparator);
+	mergeSortRecursive(arr, mid_idx + 1, back_idx, comparator);
+	merge(arr, front_idx, mid_idx, back_idx, comparator);
+	return;
+}
+
+// MERGE HELPER FUNCTION
+
+static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t end_idx, result(*comparator)(const void*, const void*))
+{
+	uint32_t left_size = mid_idx - front_idx + 1;
+	uint32_t right_size = end_idx - mid_idx;
+	
+	void** arr_left = (void**)malloc(left_size * sizeof(void*));
+	void** arr_right = (void**)malloc(right_size * sizeof(void*));
+
+	for (uint32_t i = 0; i < left_size; i++)
+	{
+		arr_left[i] = arr[front_idx + i];
+	}
+
+	for (uint32_t j = 0; j < right_size; j++)
+	{
+		arr_right[j] = arr[mid_idx + j + 1];
+	}
+
+	uint32_t i = 0, j = 0, k = front_idx;
+
+	while (i < left_size && j < right_size)
+	{
+		if (comparator(*(arr_left + i), *(arr_right + j)) == lesser)
+		{
+			arr[k] = arr_left[i];
+			i++;
+		}
+		else
+		{
+			arr[k] = arr_right[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < left_size)
+	{
+		arr[k] = arr_left[i];
+		i++;
+		k++;
+	}
+	while (j < right_size)
+	{
+		arr[k] = arr_right[j];
+		j++;
+		k++;
+	}
+
+	free(arr_left);
+	free(arr_right);
+	return;
+}
