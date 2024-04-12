@@ -134,13 +134,13 @@ void mergeSort(vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
-	mergeSortRecursive(vector->arr, 0, vector->elements - 1, comparator);
+	mergeSortHelper(vector->arr, 0, vector->elements - 1, comparator);
 	return;
 }
 
-// MERGE SORT RECURSIVE HELPER FUNCTION
+// MERGE SORT HELPER FUNCTION
 
-static void mergeSortRecursive(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+static void mergeSortHelper(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
 {
 	if (front_idx == back_idx)
 	{
@@ -149,8 +149,8 @@ static void mergeSortRecursive(void** arr, uint32_t front_idx, uint32_t back_idx
 
 	uint32_t mid_idx = front_idx + ((back_idx - front_idx) >> 1);
 
-	mergeSortRecursive(arr, front_idx, mid_idx, comparator);
-	mergeSortRecursive(arr, mid_idx + 1, back_idx, comparator);
+	mergeSortHelper(arr, front_idx, mid_idx, comparator);
+	mergeSortHelper(arr, mid_idx + 1, back_idx, comparator);
 	merge(arr, front_idx, mid_idx, back_idx, comparator);
 	return;
 }
@@ -208,4 +208,118 @@ static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t end
 	free(arr_left);
 	free(arr_right);
 	return;
+}
+
+// HEAP SORT
+
+void heapSort(vector* vector, result(*comparator)(const void*, const void*))
+{
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
+
+	uint32_t temp_heap_size = vector->elements;
+	buildMaxHeap(vector, temp_heap_size, comparator);
+	
+	for (uint32_t i = temp_heap_size - 1; i > 0; i--)
+	{
+		swap(vector->arr[0], vector->arr[i]);
+		temp_heap_size--;
+
+		buildMaxHeap(vector, temp_heap_size, comparator);
+	}
+}
+
+// HEAP SORT HELPER FUNCTION BUILD MAX HEAP
+
+static void buildMaxHeap(vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*))
+{
+	for (uint32_t i = vector->elements / 2; i >= 0; i--)
+	{
+		maxHeapify(vector, i, heap_size, comparator);
+	}
+
+	return;
+}
+
+// HEAP SORT HELPER FUNCTION MAX HEAPIFY
+
+static void maxHeapify(vector* vector, uint32_t index, uint32_t heap_size, result(*comparator)(const void*, const void*))
+{
+	while (1)
+	{
+		uint32_t largest_idx = index;
+		uint32_t left_idx = (largest_idx << 1) + 1;
+		uint32_t right_idx = (largest_idx << 1) + 2;
+
+		if (left_idx < heap_size && comparator(vector->arr[left_idx], vector->arr[largest_idx]) == greater)
+		{
+			largest_idx = left_idx;
+		}
+		if (right_idx < heap_size && comparator(vector->arr[right_idx], vector->arr[largest_idx]) == greater)
+		{
+			largest_idx = right_idx;
+		}
+
+		if (largest_idx != index)
+		{
+			swap(vector->arr[index], vector->arr[largest_idx]);
+
+			index = largest_idx;
+		}
+
+		else
+		{
+			break;
+		}
+	}
+
+	return;
+}
+
+// QUICK SORT
+
+void quickSort(vector* vector, result(*comparator)(const void*, const void*))
+{
+	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
+
+	quickSortHelper(vector, 0, vector->elements - 1, comparator);
+	return;
+}
+
+// QUICK SORT HELPER FUNCTION
+
+static void quickSortHelper(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+{
+	if (front_idx < back_idx)
+	{
+		uint32_t pivot_idx = randomized_partition(vector, front_idx, back_idx, comparator);
+
+		quickSortHelper(vector, front_idx, pivot_idx - 1, comparator);
+		quickSortHelper(vector, pivot_idx + 1, back_idx, comparator);
+	}
+
+	return;
+}
+
+// QUICK SORT HELPER FUNCTION RANDOMIZED PARTITION
+
+static uint32_t randomized_partition(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+{
+	uint32_t random_idx = (rand() % (back_idx - front_idx + 1)) + front_idx;
+	swap(vector->arr[random_idx], vector->arr[back_idx]);
+
+	const void* pivot_element = vector->arr[back_idx];
+
+	uint32_t i = front_idx - 1;
+
+	for (uint32_t j = front_idx; j < back_idx; j++)
+	{
+		if (comparator(vector->arr[j], pivot_element) != greater)
+		{
+			i++;
+			swap(vector->arr[i], vector->arr[j]);
+		}
+	}
+
+	swap(vector->arr[i], vector->arr[back_idx]);
+	return (i + 1);
 }
