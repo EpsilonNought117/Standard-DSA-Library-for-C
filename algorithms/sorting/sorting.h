@@ -1,13 +1,16 @@
 #ifndef SORTING
 #define SORTING
 
+#include <assert.h>
+#include <stdlib.h>
+#include <stdint.h>
+
 typedef enum comparision_result
 {
 	// for comparator(const void* a, const void* b)
 
-	lesser = -1,	// a < b
-	equal,			// a == b
-	greater			// a > b
+	lesser_or_equal,	// a <= b
+	greater				// a > b
 
 }	result;
 

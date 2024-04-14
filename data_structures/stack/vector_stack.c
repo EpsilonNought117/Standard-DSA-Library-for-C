@@ -1,9 +1,5 @@
 #include "vector.h"
 #include "vector_stack.h"
-#include <stdlib.h>
-#include <stdint.h>
-#include <assert.h>
-#include <limits.h>
 
 stack* init_stack(uint32_t init_size, void (*destroy)(void**))
 {

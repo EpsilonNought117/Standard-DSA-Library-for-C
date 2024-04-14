@@ -1,6 +1,11 @@
 #ifndef SINGLY_LL
 #define SINGLY_LL
 
+#include <stdlib.h>
+#include <stdint.h>
+#include <assert.h>
+#include <limits.h>
+
 typedef struct sllnode
 {
 	void* node_data;
@@ -11,30 +16,20 @@ typedef struct singlylinklist
 {
 	sllnode* head_sll;
 	sllnode* tail_sll;
-	uint32_t elements;
+	uint32_t length;
 
-	void (*destructor)(sllnode*);
+	void (*destructor)(sllnode*);  // to destroy a node of the list, not list itself
 }	singlylinklist;
 
-singlylinklist* init_sll(void (*destroy)(void**));
+singlylinklist* init_sll(void (*destroy)(sllnode*));
 
-sllnode* init_node_sll(const void* data);
+sllnode* init_sllnode(const void* data);
 
-void insert_at_head(singlylinklist* list, const sllnode* node);
+void insert_node(singlylinklist* list, sllnode* node_to_insert, sllnode* head_OR_insert_after);
 
-void insert_at_tail(singlylinklist* list, const sllnode* node);
+sllnode* remove_node(singlylinklist* list, sllnode* head_OR_remove_after); // takes list->head_sll or node of position to remove at next
 
-void insert_at_position(singlylinklist* list, const sllnode* node, const void* position);
-
-void* remove_at_head(singlylinklist* list);
-
-void* remove_at_position(singlylinklist* list, const void* position);
-
-const void* check_head(singlylinklist* list);
-
-const void* check_tail(singlylinklist* list);
-
-const void* check_at_pos(singlylinklist* list, const void* position);
+const sllnode* peek_node(singlylinklist* list, const sllnode* peek_after);
 
 void destroy_sll(singlylinklist* list);
 

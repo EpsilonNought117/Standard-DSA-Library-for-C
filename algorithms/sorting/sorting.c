@@ -1,12 +1,7 @@
 #include "vector.h"
 #include "sorting.h"
-#include <assert.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 
 // HELPER FUNCTIONS FUNCTION PROTOTYPE
-
 
 static void buildMaxHeap(vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*));
 
@@ -34,7 +29,7 @@ void bubbleSort(vector* vector, result(*comparator)(const void*, const void*))
 
 		for (uint32_t j = 1; j < vector->elements - i; j++)
 		{
-			if (comparator(vector->arr[j], vector->arr[j - 1]) == lesser)
+			if (comparator(vector->arr[j], vector->arr[j - 1]) == lesser_or_equal)
 			{
 				swap(vector->arr[j], vector->arr[j - 1]);
 				flag = false;
@@ -62,7 +57,7 @@ void selectionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 		for (uint32_t j = i + 1; j < vector->elements; j++)
 		{
-			if (comparator(vector->arr[j], vector->arr[j - 1]) == lesser)
+			if (comparator(vector->arr[j], vector->arr[j - 1]) == lesser_or_equal)
 			{
 				min_index = j;
 			}
@@ -132,7 +127,7 @@ static uint32_t binarySearchIndex(vector* vector, const void* key, result(*compa
 		uint32_t current_index = insert_index + ((check_till_index - insert_index) / 2);
 		result compare_result = comparator(vector->arr[current_index], key);
 
-		if (compare_result == lesser)
+		if (compare_result == lesser_or_equal)
 		{
 			insert_index = current_index + 1;
 		}
@@ -196,7 +191,7 @@ static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t end
 
 	while (i < left_size && j < right_size)
 	{
-		if (comparator(*(arr_left + i), *(arr_right + j)) == lesser)
+		if (comparator(*(arr_left + i), *(arr_right + j)) == lesser_or_equal)
 		{
 			arr[k] = arr_left[i];
 			i++;

@@ -1,8 +1,4 @@
 #include "vector.h"
-#include <stdlib.h>
-#include <stdint.h>
-#include <assert.h>
-#include <limits.h>
 
 vector* init_vector(uint32_t init_size, void (*destroy)(void**))
 {
@@ -62,7 +58,7 @@ void push_vector(vector* current_vector, const void* element)
 
 	if (current_vector->elements == current_vector->capacity)
 	{
-		resize(current_vector);
+		resize_vector(current_vector);
 	}
 
 	current_vector->arr[(current_vector->elements)++] = element;
@@ -76,7 +72,7 @@ void insert_vector(vector* current_vector, const void* element, uint32_t index)
 
 	if (current_vector->elements == current_vector->capacity)
 	{
-		resize(current_vector);
+		resize_vector(current_vector);
 	}
 
 	for (uint32_t i = current_vector->elements; i > index; i--)

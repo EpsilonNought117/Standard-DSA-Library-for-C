@@ -1,6 +1,11 @@
 #ifndef QUEUE
 #define QUEUE
 
+#include <assert.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <limits.h>
+
 typedef deque queue;
 
 queue* init_queue(uint32_t init_size, void (*destroy)(void**));

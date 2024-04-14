@@ -1,6 +1,11 @@
 #ifndef VECTOR
 #define VECTOR
 
+#include <stdlib.h>
+#include <stdint.h>
+#include <assert.h>
+#include <limits.h>
+
 typedef struct vector
 {
 	void** arr;

@@ -1,9 +1,4 @@
 #include "deque.h"
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <assert.h>
 
 deque* init_deque(uint32_t init_size, void (*destroy)(void**))
 {

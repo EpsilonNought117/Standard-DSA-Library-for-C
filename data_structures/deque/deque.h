@@ -1,6 +1,12 @@
 #ifndef DEQUE
 #define DEQUE
 
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <assert.h>
+
 typedef struct deque
 {
 	void** arr;

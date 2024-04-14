@@ -1,6 +1,11 @@
 #ifndef VECTOR_STACK
 #define VECTOR_STACK
 
+#include <stdlib.h>
+#include <stdint.h>
+#include <assert.h>
+#include <limits.h>
+
 typedef vector stack;
 
 stack* init_stack(uint32_t init_size, void (*destroy)(void**));
