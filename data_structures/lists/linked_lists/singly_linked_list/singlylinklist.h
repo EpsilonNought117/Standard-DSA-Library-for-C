@@ -29,7 +29,7 @@ void insert_node_sll(singlylinklist* list, sllnode* node_to_insert, sllnode* hea
 
 sllnode* remove_node_sll(singlylinklist* list, sllnode* head_tail_or_remove_after); // takes list->head_sll or node of position to remove at next
 
-const sllnode* peek_node_sll(singlylinklist* list, const sllnode* peek_at);
+const sllnode* peek_node_sll(singlylinklist* list, sllnode* peek_at);
 
 void destroy_sll(singlylinklist* list);
 

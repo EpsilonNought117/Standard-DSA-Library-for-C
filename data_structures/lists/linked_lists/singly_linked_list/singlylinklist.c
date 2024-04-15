@@ -57,7 +57,8 @@ void insert_node_sll(singlylinklist* list, sllnode* node, sllnode* position)
 
 sllnode* remove_node_sll(singlylinklist* list, sllnode* position)
 {
-	assert(list != NULL && list->head_sll != NULL && position != NULL);
+	assert(list->length > 0);
+	assert(list != NULL && position != NULL);
 
 	sllnode* temp = (position == list->head_sll ? position : position->next_ptr);
 
@@ -83,9 +84,9 @@ sllnode* remove_node_sll(singlylinklist* list, sllnode* position)
 	return temp;
 }
 
-const sllnode* peek_node_sll(singlylinklist* list, const sllnode* position)
+const sllnode* peek_node_sll(singlylinklist* list, sllnode* position)
 {
-	assert(list != NULL && list->head != NULL && position != NULL);
+	assert(list != NULL && list->head_sll != NULL && position != NULL);
 
 	return position;
 }
@@ -96,13 +97,18 @@ void destroy_sll(singlylinklist* list)
 	
 	sllnode* current_node = list->head_sll;
 
+	list->head_sll == NULL;
+	list->tail_sll == NULL;
+
 	while (current_node)
 	{
 		sllnode* next_node = current_node->next_ptr;
+		current_node->next_ptr = NULL;
 		list->destructor(current_node);
 		current_node = next_node;
 	}
 
 	free(list);
+	list = NULL;
 	return;
 }
