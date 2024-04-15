@@ -1,6 +1,6 @@
 #include "deque.h"
 
-deque* init_deque(uint32_t init_size, void (*destroy)(void**))
+deque* init_deque(uint32_t init_size, void (*destroy)(deque*))
 {
 	assert(init_size != 0 && destroy != NULL);
 
@@ -143,7 +143,6 @@ const void* peek_back_deque(deque* deque)
 void destroy_deque(deque* current_deque)
 {
 	assert(current_deque != NULL && current_deque->arr != NULL);
-	current_deque->destructor((void*)current_deque->arr);
-	free(current_deque);
+	current_deque->destructor(current_deque);
 	return;
 }

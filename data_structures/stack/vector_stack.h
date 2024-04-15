@@ -8,7 +8,7 @@
 
 typedef vector stack;
 
-stack* init_stack(uint32_t init_size, void (*destroy)(void**));
+stack* init_stack(uint32_t init_size, void (*destroy)(stack*));
 
 void resize_stack(stack* stack);
 
