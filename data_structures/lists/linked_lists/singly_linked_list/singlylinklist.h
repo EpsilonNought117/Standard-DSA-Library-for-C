@@ -25,11 +25,11 @@ singlylinklist* init_sll(void (*destroy)(sllnode*));
 
 sllnode* init_sllnode(const void* data);
 
-void insert_node(singlylinklist* list, sllnode* node_to_insert, sllnode* head_OR_insert_after);
+void insert_node_sll(singlylinklist* list, sllnode* node_to_insert, sllnode* head_tail_OR_insert_after);
 
-sllnode* remove_node(singlylinklist* list, sllnode* head_OR_remove_after); // takes list->head_sll or node of position to remove at next
+sllnode* remove_node_sll(singlylinklist* list, sllnode* head_tail_or_remove_after); // takes list->head_sll or node of position to remove at next
 
-const sllnode* peek_node(singlylinklist* list, const sllnode* peek_after);
+const sllnode* peek_node_sll(singlylinklist* list, const sllnode* peek_at);
 
 void destroy_sll(singlylinklist* list);
 

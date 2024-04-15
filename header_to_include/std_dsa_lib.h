@@ -1,3 +1,12 @@
+// system header files
+
+#include <stdlib.h>
+#include <limits.h>
+#include <stdint.h>
+#include <string.h>
+#include <assert.h>
+
+
 // user defined headers
 
 #include "Standard_DSA_Library_for_C/data_structures/deque/deque.h"

@@ -28,7 +28,7 @@ sllnode* init_sllnode(const void* data)
 	return new_node;
 } 
 
-void insert_node(singlylinklist* list, sllnode* node, sllnode* position)
+void insert_node_sll(singlylinklist* list, sllnode* node, sllnode* position)
 {
 	assert(list->length < UINT32_MAX);
 	assert(list != NULL && node != NULL);
@@ -55,7 +55,7 @@ void insert_node(singlylinklist* list, sllnode* node, sllnode* position)
 	return;
 }
 
-sllnode* remove_node(singlylinklist* list, sllnode* position)
+sllnode* remove_node_sll(singlylinklist* list, sllnode* position)
 {
 	assert(list != NULL && list->head_sll != NULL && position != NULL);
 
@@ -83,7 +83,7 @@ sllnode* remove_node(singlylinklist* list, sllnode* position)
 	return temp;
 }
 
-const sllnode* peek_node(singlylinklist* list, const sllnode* position)
+const sllnode* peek_node_sll(singlylinklist* list, const sllnode* position)
 {
 	assert(list != NULL && list->head != NULL && position != NULL);
 
