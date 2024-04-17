@@ -8,7 +8,7 @@ static void maxHeapify(Vector* vector, uint32_t index, uint32_t heap_size, resul
 
 static void quickSortHelper(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
-static uint32_t randomized_partition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
+static uint32_t randomizedPartition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
 static void mergeSortHelper(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
@@ -302,7 +302,7 @@ static void quickSortHelper(Vector* vector, uint32_t front_idx, uint32_t back_id
 {
 	if (front_idx < back_idx)
 	{
-		uint32_t pivot_idx = randomized_partition(vector, front_idx, back_idx, comparator);
+		uint32_t pivot_idx = randomizedPartition(vector, front_idx, back_idx, comparator);
 
 		quickSortHelper(vector, front_idx, pivot_idx - 1, comparator);
 		quickSortHelper(vector, pivot_idx + 1, back_idx, comparator);
@@ -313,7 +313,7 @@ static void quickSortHelper(Vector* vector, uint32_t front_idx, uint32_t back_id
 
 // QUICK SORT HELPER FUNCTION RANDOMIZED PARTITION
 
-static uint32_t randomized_partition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+static uint32_t randomizedPartition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
 {
 	uint32_t random_idx = (rand() % (back_idx - front_idx + 1)) + front_idx;
 	swap(vector->arr[random_idx], vector->arr[back_idx]);
