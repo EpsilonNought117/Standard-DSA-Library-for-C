@@ -1,7 +1,12 @@
-#ifndef SORTING
-#define SORTING
+#ifndef SYSTEM_HEADERS
+#define SYSTEM_HEADERS
 
 #include "../user_defined_headers/system_headers_req.h"
+
+#endif
+
+#ifndef SORTING
+#define SORTING
 
 typedef enum comparision_result
 {

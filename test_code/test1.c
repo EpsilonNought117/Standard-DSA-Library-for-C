@@ -1,3 +1,4 @@
+#include "../user_defined_headers/std_dsa_lib.h"
 #include <stdio.h>
 
 typedef struct example
@@ -11,7 +12,7 @@ void destroy_fn(void**, uint32_t);
 int main(void)
 {
 	uint32_t size = 256;
-	vector* v1 = init_vector(size, &destroy_fn);
+	Vector* v1 = init_vector(size, &destroy_fn);
 
 	for (uint32_t i = 0; i < size; i++)
 	{

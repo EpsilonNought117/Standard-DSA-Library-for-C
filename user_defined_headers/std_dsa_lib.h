@@ -1,8 +1,6 @@
 #ifndef STD_DSA_LIB_HEADER
 #define STD_DSA_LIB_HEADER
 
-#include "system_headers_req.h"
-
 // user defined headers
 
 #include "../data_structures/deque/deque.h"

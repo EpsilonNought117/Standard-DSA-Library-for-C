@@ -1,7 +1,12 @@
-#ifndef SINGLY_LL
-#define SINGLY_LL
+#ifndef SYSTEM_HEADERS
+#define SYSTEM_HEADERS
 
 #include "../user_defined_headers/system_headers_req.h"
+
+#endif
+
+#ifndef SINGLY_LL
+#define SINGLY_LL
 
 typedef struct sllnode
 {
