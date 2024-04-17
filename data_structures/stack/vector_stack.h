@@ -2,7 +2,7 @@
 #define VECTOR_STACK
 
 #include "../header_to_include/std_dsa_lib.h"
-#include "..lists/vector/vector.h"
+#include "../lists/vector/vector.h"
 
 typedef vector stack;
 
