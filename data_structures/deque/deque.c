@@ -1,10 +1,14 @@
 #include "deque.h"
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <assert.h>
 
 Deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
-	deque* new_deque = (deque*)malloc(sizeof(deque));
+	Deque* new_deque = (deque*)malloc(sizeof(deque));
 
 	assert(new_deque != NULL);
 

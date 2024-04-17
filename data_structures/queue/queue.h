@@ -1,13 +1,8 @@
-#ifndef SYSTEM_HEADERS
-#define SYSTEM_HEADERS
-
-#include "../user_defined_headers/system_headers_req.h"
-#include "../deque/deque.h"
-
-#endif
-
 #ifndef QUEUE
 #define QUEUE
+
+#include <stdint.h>
+#include "../deque/deque.h"
 
 typedef Deque Queue;
 

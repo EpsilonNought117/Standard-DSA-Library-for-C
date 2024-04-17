@@ -1,4 +1,7 @@
 #include "singlylinklist.h"
+#include <stdlib.h>
+#include <limits.h>
+#include <assert.h>
 
 singlylinklist* init_sll(void (*destroy)(sllnode*))
 {

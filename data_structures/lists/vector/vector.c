@@ -1,10 +1,13 @@
 #include "vector.h"
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
 
 Vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
-	vector* new_vector = (vector*)malloc(sizeof(vector));
+	Vector* new_vector = (Vector*)malloc(sizeof(vector));
 	
 	assert(new_vector != NULL);
 

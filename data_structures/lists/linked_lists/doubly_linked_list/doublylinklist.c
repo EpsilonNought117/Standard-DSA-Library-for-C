@@ -1,4 +1,7 @@
 #include "doublylinklist.h"
+#include <stdlib.h>
+#include <limits.h>
+#include <assert.h>
 
 doublylinklist* init_dll(void (*destroy)(dllnode*))
 {

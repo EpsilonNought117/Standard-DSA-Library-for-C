@@ -1,4 +1,8 @@
 #include "sorting.h"
+#include <stdlib.h>
+#include <stdint.h>
+#include <assert.h>
+#include <limits.h>
 
 // HELPER FUNCTIONS FUNCTION PROTOTYPE
 

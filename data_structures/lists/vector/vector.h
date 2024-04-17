@@ -1,13 +1,7 @@
-#ifndef SYSTEM_HEADERS
-#define SYSTEM_HEADERS
-
-#include "../user_defined_headers/system_headers_req.h"
-
-#endif
-
-
 #ifndef VECTOR
 #define VECTOR
+
+#include <stdint.h>
 
 typedef struct Vector
 {

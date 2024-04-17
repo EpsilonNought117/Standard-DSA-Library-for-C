@@ -1,4 +1,5 @@
 #include "../user_defined_headers/std_dsa_lib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 typedef struct example

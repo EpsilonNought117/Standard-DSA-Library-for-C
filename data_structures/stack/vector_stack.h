@@ -1,13 +1,8 @@
-#ifndef SYSTEM_HEADERS
-#define SYSTEM_HEADERS
-
-#include "../user_defined_headers/system_headers_req.h"
-#include "../lists/vector/vector.h"
-
-#endif
-
 #ifndef VECTOR_STACK
 #define VECTOR_STACK
+
+#include <stdint.h>
+#include "../lists/vector/vector.h"
 
 typedef Vector Stack;
 
