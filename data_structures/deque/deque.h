@@ -1,7 +1,7 @@
 #ifndef DEQUE
 #define DEQUE
 
-#include "../header_to_include/std_dsa_lib.h"
+#include "../user_defined_headers/system_headers_req.h"
 
 typedef struct Deque
 {
