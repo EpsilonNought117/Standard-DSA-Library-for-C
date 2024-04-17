@@ -1,14 +1,7 @@
 #ifndef STD_DSA_LIB_HEADER
 #define STD_DSA_LIB_HEADER
 
-// system header files
-
-#include <stdlib.h>
-#include <limits.h>
-#include <stdint.h>
-#include <string.h>
-#include <assert.h>
-
+#include "system_headers_req.h"
 
 // user defined headers
 
