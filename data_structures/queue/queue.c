@@ -1,4 +1,3 @@
-#include "deque.h"
 #include "queue.h"
 
 queue* init_queue(uint32_t init_size, void (*destroy)(void**, uint32_t))

@@ -1,11 +1,7 @@
 #ifndef DEQUE
 #define DEQUE
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <assert.h>
+#include "../header_to_include/std_dsa_lib.h"
 
 typedef struct deque
 {

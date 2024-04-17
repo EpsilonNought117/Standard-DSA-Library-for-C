@@ -1,10 +1,8 @@
 #ifndef VECTOR_STACK
 #define VECTOR_STACK
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <assert.h>
-#include <limits.h>
+#include "../header_to_include/std_dsa_lib.h"
+#include "..lists/vector/vector.h"
 
 typedef vector stack;
 

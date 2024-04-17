@@ -1,10 +1,8 @@
 #ifndef QUEUE
 #define QUEUE
 
-#include <assert.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <limits.h>
+#include "../header_to_include/std_dsa_lib.h"
+#include "../deque/deque.h"
 
 typedef deque queue;
 

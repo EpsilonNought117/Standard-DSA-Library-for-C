@@ -1,10 +1,7 @@
 #ifndef SINGLY_LL
 #define SINGLY_LL
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <assert.h>
-#include <limits.h>
+#include "../header_to_include/std_dsa_lib.h"
 
 typedef struct sllnode
 {
