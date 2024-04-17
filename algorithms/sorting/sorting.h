@@ -23,7 +23,7 @@ void insertionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 void binaryInsertionSort(vector* vector, result(*comparator)(const void*, const void*));
 
-void mergeSort(vector* vector, result(*comparator(const void*, const void*));
+void mergeSort(vector* vector, result(*comparator)(const void*, const void*));
 
 void heapSort(vector* vector, result(*comparator)(const void*, const void*));
 
