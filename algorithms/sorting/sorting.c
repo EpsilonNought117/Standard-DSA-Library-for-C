@@ -2,23 +2,23 @@
 
 // HELPER FUNCTIONS FUNCTION PROTOTYPE
 
-static void buildMaxHeap(vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*));
+static void buildMaxHeap(Vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*));
 
-static void maxHeapify(vector* vector, uint32_t index, uint32_t heap_size, result(*comparator)(const void*, const void*));
+static void maxHeapify(Vector* vector, uint32_t index, uint32_t heap_size, result(*comparator)(const void*, const void*));
 
-static void quickSortHelper(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
+static void quickSortHelper(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
-static uint32_t randomized_partition(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
+static uint32_t randomized_partition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
 static void mergeSortHelper(void** arr, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*));
 
 static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t back_idx, result(*comparator)(const  void*, const void*));
 
-static uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index);
+static uint32_t binarySearchIndex(Vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index);
 
 // BUBBLE SORT
 
-void bubbleSort(vector* vector, result(*comparator)(const void*, const void*))
+void bubbleSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -46,7 +46,7 @@ void bubbleSort(vector* vector, result(*comparator)(const void*, const void*))
 
 // SELECTION SORT
 
-void selectionSort(vector* vector, result(*comparator)(const void*, const void*))
+void selectionSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -70,7 +70,7 @@ void selectionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 // INSERTION SORT
 
-void insertionSort(vector* vector, result(*comparator)(const void*, const void*))
+void insertionSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -93,7 +93,7 @@ void insertionSort(vector* vector, result(*comparator)(const void*, const void*)
 
 // BINARY INSERTION SORT
 
-void binaryInsertionSort(vector* vector, result(*comparator)(const  void*, const void*))
+void binaryInsertionSort(Vector* vector, result(*comparator)(const  void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -117,7 +117,7 @@ void binaryInsertionSort(vector* vector, result(*comparator)(const  void*, const
 
 // BINARY INSERTION SORT HELPER FUNCTION
 
-static uint32_t binarySearchIndex(vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index)
+static uint32_t binarySearchIndex(Vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index)
 {
 	uint32_t insert_index = 0;
 
@@ -141,7 +141,7 @@ static uint32_t binarySearchIndex(vector* vector, const void* key, result(*compa
 
 // MERGE SORT WRAPPER FUNCTION
 
-void mergeSort(vector* vector, result(*comparator)(const void*, const void*))
+void mergeSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -223,7 +223,7 @@ static void merge(void** arr, uint32_t front_idx, uint32_t mid_idx, uint32_t end
 
 // HEAP SORT
 
-void heapSort(vector* vector, result(*comparator)(const void*, const void*))
+void heapSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -241,7 +241,7 @@ void heapSort(vector* vector, result(*comparator)(const void*, const void*))
 
 // HEAP SORT HELPER FUNCTION BUILD MAX HEAP
 
-static void buildMaxHeap(vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*))
+static void buildMaxHeap(Vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*))
 {
 	for (uint32_t i = vector->elements / 2; i >= 0; i--)
 	{
@@ -253,7 +253,7 @@ static void buildMaxHeap(vector* vector, uint32_t heap_size, result(*comparator)
 
 // HEAP SORT HELPER FUNCTION MAX HEAPIFY
 
-static void maxHeapify(vector* vector, uint32_t index, uint32_t heap_size, result(*comparator)(const void*, const void*))
+static void maxHeapify(Vector* vector, uint32_t index, uint32_t heap_size, result(*comparator)(const void*, const void*))
 {
 	while (1)
 	{
@@ -288,7 +288,7 @@ static void maxHeapify(vector* vector, uint32_t index, uint32_t heap_size, resul
 
 // QUICK SORT
 
-void quickSort(vector* vector, result(*comparator)(const void*, const void*))
+void quickSort(Vector* vector, result(*comparator)(const void*, const void*))
 {
 	assert(vector != NULL && vector->arr != NULL && comparator != NULL);
 
@@ -298,7 +298,7 @@ void quickSort(vector* vector, result(*comparator)(const void*, const void*))
 
 // QUICK SORT HELPER FUNCTION
 
-static void quickSortHelper(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+static void quickSortHelper(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
 {
 	if (front_idx < back_idx)
 	{
@@ -313,7 +313,7 @@ static void quickSortHelper(vector* vector, uint32_t front_idx, uint32_t back_id
 
 // QUICK SORT HELPER FUNCTION RANDOMIZED PARTITION
 
-static uint32_t randomized_partition(vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
+static uint32_t randomized_partition(Vector* vector, uint32_t front_idx, uint32_t back_idx, result(*comparator)(const void*, const void*))
 {
 	uint32_t random_idx = (rand() % (back_idx - front_idx + 1)) + front_idx;
 	swap(vector->arr[random_idx], vector->arr[back_idx]);

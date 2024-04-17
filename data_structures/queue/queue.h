@@ -2,24 +2,23 @@
 #define QUEUE
 
 #include "../header_to_include/std_dsa_lib.h"
-#include "../deque/deque.h"
 
-typedef deque queue;
+typedef Deque Queue;
 
-queue* init_queue(uint32_t init_size, void (*destroy)(void**, uint32_t));
+Queue* init_queue(uint32_t init_size, void (*destroy)(void**, uint32_t));
 
-void resize_queue(queue* queue);
+void resize_queue(Queue* queue);
 
-void shrink_queue(queue* queue);
+void shrink_queue(Queue* queue);
 
-void enqueue(queue* queue, const void* element);
+void enqueue(Queue* queue, const void* element);
 
-void* dequeue(queue* queue);
+void* dequeue(Queue* queue);
 
-const void* least_recent(queue* queue);
+const void* least_recent(Queue* queue);
 
-const void* most_recent(queue* queue);
+const void* most_recent(Queue* queue);
 
-void destroy_queue(queue* queue);
+void destroy_queue(Queue* queue);
 
 #endif

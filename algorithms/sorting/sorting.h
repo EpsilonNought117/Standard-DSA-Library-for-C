@@ -2,7 +2,6 @@
 #define SORTING
 
 #include "../header_to_include/std_dsa_lib.h"
-#include "../data_structures/lists/vector/vector.h"
 
 typedef enum comparision_result
 {
@@ -15,18 +14,18 @@ typedef enum comparision_result
 
 // comparision function: int32_t (*comparator)(const void*, const void*);
 
-void bubbleSort(vector* vector, result (*comparator)(const void*, const void*));
+void bubbleSort(Vector* vector, result (*comparator)(const void*, const void*));
 
-void selectionSort(vector* vector, result (*comparator)(const void*, const void*));
+void selectionSort(Vector* vector, result (*comparator)(const void*, const void*));
 
-void insertionSort(vector* vector, result(*comparator)(const void*, const void*));
+void insertionSort(Vector* vector, result(*comparator)(const void*, const void*));
 
-void binaryInsertionSort(vector* vector, result(*comparator)(const void*, const void*));
+void binaryInsertionSort(Vector* vector, result(*comparator)(const void*, const void*));
 
-void mergeSort(vector* vector, result(*comparator)(const void*, const void*));
+void mergeSort(Vector* vector, result(*comparator)(const void*, const void*));
 
-void heapSort(vector* vector, result(*comparator)(const void*, const void*));
+void heapSort(Vector* vector, result(*comparator)(const void*, const void*));
 
-void quickSort(vector* vector, result(*comparator)(const void*, const void*));
+void quickSort(Vector* vector, result(*comparator)(const void*, const void*));
 
 #endif

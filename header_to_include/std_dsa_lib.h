@@ -1,3 +1,6 @@
+#ifndef STD_DSA_LIB_HEADER
+#define STD_DSA_LIB_HEADER
+
 // system header files
 
 #include <stdlib.h>
@@ -16,3 +19,5 @@
 #include "../data_structures/queue/queue.h"
 #include "../data_structures/stack/vector_stack.h"
 #include "../algorithms/sorting/sorting.h"
+
+#endif

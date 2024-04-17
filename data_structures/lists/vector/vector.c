@@ -1,6 +1,6 @@
 #include "vector.h"
 
-vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
+Vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
@@ -18,7 +18,7 @@ vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
 	return new_vector;
 }
 
-void resize_vector(vector* current_vector)
+void resize_vector(Vector* current_vector)
 {
 	assert(current_vector != NULL);
 	assert(current_vector->capacity < UINT32_MAX);
@@ -34,7 +34,7 @@ void resize_vector(vector* current_vector)
 	return;
 }
 
-void shrink_vector(vector* current_vector)
+void shrink_vector(Vector* current_vector)
 {
 	assert(current_vector != NULL);
 
@@ -52,7 +52,7 @@ void shrink_vector(vector* current_vector)
 	return;
 }
 
-void push_vector(vector* current_vector, const void* element)
+void push_vector(Vector* current_vector, const void* element)
 {
 	assert(current_vector != NULL && element != NULL && current_vector->arr != NULL);
 
@@ -65,7 +65,7 @@ void push_vector(vector* current_vector, const void* element)
 	return;
 }
 
-void insert_vector(vector* current_vector, const void* element, uint32_t index)
+void insert_vector(Vector* current_vector, const void* element, uint32_t index)
 {
 	assert(current_vector != NULL && element != NULL && current_vector->arr != NULL);
 	assert(index < current_vector->elements);
@@ -85,7 +85,7 @@ void insert_vector(vector* current_vector, const void* element, uint32_t index)
 	return;
 }
 
-void* pop_vector(vector* current_vector)
+void* pop_vector(Vector* current_vector)
 {
 	assert(current_vector != NULL && current_vector->arr != NULL);
 	
@@ -95,7 +95,7 @@ void* pop_vector(vector* current_vector)
 	return element;
 }
 
-void* remove_vector(vector* current_vector, uint32_t index)
+void* remove_vector(Vector* current_vector, uint32_t index)
 {
 	assert(current_vector != NULL && current_vector->arr != NULL);
 	assert(index < (current_vector->elements) - 1);
@@ -111,7 +111,7 @@ void* remove_vector(vector* current_vector, uint32_t index)
 	return element;
 }
 
-const void* atIndex(vector* current_vector, uint32_t index)
+const void* atIndex(Vector* current_vector, uint32_t index)
 {
 	assert(current_vector != NULL && current_vector->arr != NULL);
 	assert(index < current_vector->elements);
@@ -127,7 +127,7 @@ void swap(const void* element_a, const void* element_b)
 	return;
 }
 
-void destroy_vector(vector* current_vector)
+void destroy_vector(Vector* current_vector)
 {
 	assert(current_vector != NULL && current_vector->arr != NULL);
 	current_vector->destructor(current_vector->arr, current_vector->elements);

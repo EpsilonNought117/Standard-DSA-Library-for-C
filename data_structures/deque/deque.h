@@ -3,7 +3,7 @@
 
 #include "../header_to_include/std_dsa_lib.h"
 
-typedef struct deque
+typedef struct Deque
 {
 	void** arr;
 	uint32_t capacity;
@@ -12,26 +12,26 @@ typedef struct deque
 	uint32_t back_idx;
 	
 	void (*destructor)(void**, uint32_t);
-}	deque;
+}	Deque;
 
-deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t));
+Deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t));
 
-void resize_deque(deque* deque);
+void resize_deque(Deque* deque);
 
-void shrink_deque(deque* deque);
+void shrink_deque(Deque* deque);
 
-void enqueue_front(deque* deque, const void* element);
+void enqueue_front(Deque* deque, const void* element);
 
-void enqueue_back(deque* deque, const void* element);
+void enqueue_back(Deque* deque, const void* element);
 
-void* dequeue_front(deque* deque);
+void* dequeue_front(Deque* deque);
 
-void* dequeue_back(deque* deque);
+void* dequeue_back(Deque* deque);
 
-const void* peek_front_deque(deque* deque);
+const void* peek_front_deque(Deque* deque);
 
-const void* peek_back_deque(deque* deque);
+const void* peek_back_deque(Deque* deque);
 
-void destroy_deque(deque* deque);
+void destroy_deque(Deque* deque);
 
 #endif
