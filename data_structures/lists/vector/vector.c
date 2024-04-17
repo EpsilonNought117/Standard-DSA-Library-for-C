@@ -1,6 +1,6 @@
 #include "vector.h"
 
-vector* init_vector(uint32_t init_size, void (*destroy)(vector*))
+vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
@@ -130,7 +130,7 @@ void swap(const void* element_a, const void* element_b)
 void destroy_vector(vector* current_vector)
 {
 	assert(current_vector != NULL && current_vector->arr != NULL);
-	current_vector->destructor(current_vector);
+	current_vector->destructor(current_vector->arr, current_vector->elements);
 	free(current_vector);
 	return;
 }

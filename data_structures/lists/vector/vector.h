@@ -12,10 +12,10 @@ typedef struct vector
 	uint32_t capacity;
 	uint32_t elements;
 
-	void (*destructor)(vector*);
+	void (*destructor)(void** arr, uint32_t);
 }	vector;
 
-vector* init_vector(uint32_t init_size, void (*destroy)(vector*));
+vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t));
 
 void resize_vector(vector* current_vector);
 

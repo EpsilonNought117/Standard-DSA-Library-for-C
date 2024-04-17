@@ -15,10 +15,10 @@ typedef struct deque
 	uint32_t front_idx;
 	uint32_t back_idx;
 	
-	void (*destructor)(struct deque*);
+	void (*destructor)(void**, uint32_t);
 }	deque;
 
-deque* init_deque(uint32_t init_size, void (*destroy)(deque*));
+deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t));
 
 void resize_deque(deque* deque);
 

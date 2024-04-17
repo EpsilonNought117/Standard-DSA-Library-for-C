@@ -1,7 +1,7 @@
 #include "deque.h"
 #include "queue.h"
 
-queue* init_queue(uint32_t init_size, void (*destroy)(queue*))
+queue* init_queue(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	return (queue*)init_deque(init_size, destroy);
 }

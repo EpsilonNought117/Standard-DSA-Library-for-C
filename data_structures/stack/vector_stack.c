@@ -1,7 +1,7 @@
 #include "vector.h"
 #include "vector_stack.h"
 
-stack* init_stack(uint32_t init_size, void (*destroy)(stack*))
+stack* init_stack(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	return (stack*)init_vector(init_size, destroy);
 }

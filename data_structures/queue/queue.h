@@ -8,7 +8,7 @@
 
 typedef deque queue;
 
-queue* init_queue(uint32_t init_size, void (*destroy)(queue*));
+queue* init_queue(uint32_t init_size, void (*destroy)(void**, uint32_t));
 
 void resize_queue(queue* queue);
 
