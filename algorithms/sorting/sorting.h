@@ -1,9 +1,8 @@
 #ifndef SORTING
 #define SORTING
 
-#include <assert.h>
-#include <stdlib.h>
-#include <stdint.h>
+#include "../header_to_include/std_dsa_lib.h"
+#include "../data_structures/lists/vector/vector.h"
 
 typedef enum comparision_result
 {

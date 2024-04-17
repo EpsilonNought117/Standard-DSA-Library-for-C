@@ -1,4 +1,3 @@
-#include "vector.h"
 #include "sorting.h"
 
 // HELPER FUNCTIONS FUNCTION PROTOTYPE
