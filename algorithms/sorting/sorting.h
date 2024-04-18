@@ -1,7 +1,7 @@
 #ifndef SORTING
 #define SORTING
 
-#include "../data_structures/lists/vector/vector.h"
+#include "../../data_structures/lists/vector/vector.h"
 
 typedef enum comparision_result
 {
@@ -16,7 +16,7 @@ typedef enum comparision_result
 
 void bubbleSort(Vector* vector, result (*comparator)(const void*, const void*));
 
-void selectionSort(Vector* vector, result (*comparator)(const void*, const void*));
+void selectionSort(Vector* vector, result(*comparator)(const void*, const void*));
 
 void insertionSort(Vector* vector, result(*comparator)(const void*, const void*));
 

@@ -7,7 +7,7 @@ Vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
-	Vector* new_vector = (Vector*)malloc(sizeof(vector));
+	Vector* new_vector = (Vector*)malloc(sizeof(Vector));
 	
 	assert(new_vector != NULL);
 
@@ -124,7 +124,7 @@ const void* atIndex(Vector* current_vector, uint32_t index)
 
 void swap(const void* element_a, const void* element_b)
 {
-	void* temp = element_a;
+	const void* temp = element_a;
 	element_a = element_b;
 	element_b = temp;
 	return;

@@ -1,6 +1,8 @@
-#include "../user_defined_headers/std_dsa_lib.h"
+#include "../algorithms/sorting/sorting.h"
+#include "../data_structures/lists/vector/vector.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 
 typedef struct example
 {
