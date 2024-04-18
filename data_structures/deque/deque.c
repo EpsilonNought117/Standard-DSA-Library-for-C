@@ -8,7 +8,7 @@ Deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
-	Deque* new_deque = (deque*)malloc(sizeof(deque));
+	Deque* new_deque = (Deque*)malloc(sizeof(deque));
 
 	assert(new_deque != NULL);
 
