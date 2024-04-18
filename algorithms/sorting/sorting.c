@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <assert.h>
 #include <limits.h>
+#include <stdbool.h>
 
 // HELPER FUNCTIONS FUNCTION PROTOTYPE
 
@@ -56,17 +57,17 @@ void selectionSort(Vector* vector, result(*comparator)(const void*, const void*)
 
 	for (uint32_t i = 0; i < vector->elements; i++)
 	{
-		uint32_t min_index = 0;
+		uint32_t min_index = i;
 
 		for (uint32_t j = i + 1; j < vector->elements; j++)
 		{
-			if (comparator(vector->arr[j], vector->arr[j - 1]) == lesser_or_equal)
+			if (comparator(vector->arr[j], vector->arr[min_index]) == lesser_or_equal)
 			{
 				min_index = j;
 			}
-
-			swap(vector->arr[min_index], vector->arr[i]);
 		}
+
+		swap(vector->arr[min_index], vector->arr[i]);
 	}
 
 	return;
@@ -81,18 +82,18 @@ void insertionSort(Vector* vector, result(*comparator)(const void*, const void*)
 	for (uint32_t i = 1; i < vector->elements; i++)
 	{
 		const void* key = vector->arr[i];
-		uint32_t j = i - 1;
+		int64_t j = (int64_t)i - 1;
 
 		while (j >= 0 && (comparator(vector->arr[j], key) == greater))
 		{
-			vector->arr[j] = vector->arr[j - 1];
+			vector->arr[j + 1] = vector->arr[j];
 			j--;
 		}
 
 		vector->arr[j + 1] = key;
 	}
 
-	return
+	return;
 }
 
 // BINARY INSERTION SORT
@@ -104,8 +105,8 @@ void binaryInsertionSort(Vector* vector, result(*comparator)(const  void*, const
 	for (uint32_t i = 1; i < vector->elements; i++)
 	{
 		const void* key = vector->arr[i];
-		uint32_t j = i - 1;
-		uint32_t insertion_index = binarySearchIndex(vector, key, comparator, j);
+		int64_t j = (int64_t)i - 1;
+		uint32_t insertion_index = binarySearchIndex(vector, key, comparator, (uint32_t)j);
 
 		while (j >= insertion_index)
 		{
@@ -123,24 +124,29 @@ void binaryInsertionSort(Vector* vector, result(*comparator)(const  void*, const
 
 static uint32_t binarySearchIndex(Vector* vector, const void* key, result(*comparator)(const void*, const void*), uint32_t check_till_index)
 {
-	uint32_t insert_index = 0;
+	uint32_t left_index = 0;
+	uint32_t right_index = check_till_index;
+	uint32_t mid_index = left_index + ((right_index - left_index) / 2);
 
-	while (insert_index <= check_till_index)
+	while (left_index <= right_index)
 	{
-		uint32_t current_index = insert_index + ((check_till_index - insert_index) / 2);
-		result compare_result = comparator(vector->arr[current_index], key);
+		mid_index = left_index + ((right_index - left_index) / 2);
+		result comp_result = comparator(vector->arr[mid_index], key);
 
-		if (compare_result == lesser_or_equal)
+		if (comp_result == lesser_or_equal)
 		{
-			insert_index = current_index + 1;
+			left_index = mid_index + 1;
 		}
 		else
 		{
-			check_till_index = current_index - 1;
+			if (mid_index == 0)
+				break;
+
+			right_index = mid_index - 1;
 		}
 	}
 
-	return insert_index + 1;
+	return left_index;
 }
 
 // MERGE SORT WRAPPER FUNCTION
@@ -247,9 +253,9 @@ void heapSort(Vector* vector, result(*comparator)(const void*, const void*))
 
 static void buildMaxHeap(Vector* vector, uint32_t heap_size, result(*comparator)(const void*, const void*))
 {
-	for (uint32_t i = vector->elements / 2; i >= 0; i--)
+	for (int64_t i = (int64_t)vector->elements / 2; i >= 0; i--)
 	{
-		maxHeapify(vector, i, heap_size, comparator);
+		maxHeapify(vector, (uint32_t)i, heap_size, comparator);
 	}
 
 	return;
@@ -335,6 +341,6 @@ static uint32_t randomizedPartition(Vector* vector, uint32_t front_idx, uint32_t
 		}
 	}
 
-	swap(vector->arr[i], vector->arr[back_idx]);
+	swap(vector->arr[i + 1], vector->arr[back_idx]);
 	return (i + 1);
 }

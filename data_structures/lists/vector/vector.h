@@ -28,7 +28,7 @@ void* remove_vector(Vector* current_vector, uint32_t index);
 
 const void* atIndex(Vector* current_vector, uint32_t index);
 
-void swap(const void* element_a, const void* element_b);
+void swap(void** element_a, void** element_b);
 
 void destroy_vector(Vector* current_vector);   // user defined destroy function that frees the array of void pointers
 

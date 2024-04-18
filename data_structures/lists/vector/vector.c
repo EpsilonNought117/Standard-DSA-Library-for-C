@@ -122,11 +122,11 @@ const void* atIndex(Vector* current_vector, uint32_t index)
 	return (const void*)current_vector->arr[index];
 }
 
-void swap(const void* element_a, const void* element_b)
+void swap(void** element_a, void** element_b)
 {
-	const void* temp = element_a;
-	element_a = element_b;
-	element_b = temp;
+	void* temp = *element_a;
+	*element_a = *element_b;
+	*element_b = temp;
 	return;
 }
 
