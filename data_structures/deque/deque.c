@@ -8,7 +8,7 @@ Deque* init_deque(uint32_t init_size, void (*destroy)(void**, uint32_t))
 {
 	assert(init_size != 0 && destroy != NULL);
 
-	Deque* new_deque = (Deque*)malloc(sizeof(deque));
+	Deque* new_deque = (Deque*)malloc(sizeof(Deque));
 
 	assert(new_deque != NULL);
 
@@ -57,7 +57,7 @@ void shrink_deque(Deque* deque)
 		return;
 	}
 
-	void** temp_shrunk_arr_ptr = (void**)realloc(dequeue->arr, sizeof(void**) * deque->elements);
+	void** temp_shrunk_arr_ptr = (void**)realloc(deque->arr, sizeof(void**) * deque->elements);
 
 	assert(temp_shrunk_arr_ptr != NULL);
 
