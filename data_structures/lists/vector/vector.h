@@ -9,7 +9,7 @@ typedef struct Vector
 	uint32_t capacity;
 	uint32_t elements;
 
-	void (*destructor)(void** arr, uint32_t);
+	void (*destructor)(void**, uint32_t);
 }	Vector;
 
 Vector* init_vector(uint32_t init_size, void (*destroy)(void**, uint32_t));
