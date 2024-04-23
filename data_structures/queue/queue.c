@@ -20,9 +20,9 @@ void enqueue(Queue* queue, const void* element)
 	return enqueue_back(queue, element);
 }
 
-void dequeue(Queue* queue)
+void* dequeue(Queue* queue)
 {
-	return dequeue_front(queue, element);
+	return dequeue_front(queue);
 }
 
 const void* least_recent(Queue* queue)

@@ -69,7 +69,7 @@ void insert_node_dll(doublylinklist* list, dllnode* node, dllnode* position)
 
 dllnode* remove_node_dll(doublylinklist* list, dllnode* position)
 {
-	assert(list != NULL && position != NULL)
+	assert(list != NULL && position != NULL);
 	assert(list->length > 0);
 
 	dllnode* temp = position;
