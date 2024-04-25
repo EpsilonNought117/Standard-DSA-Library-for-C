@@ -8,7 +8,6 @@ add_executable(Standard_DSA_Library_for_C
 	test_code/test_code1.c
 
 	algorithms/sorting/sorting.c
-	algorithms/numeric_algorithms/numeric_algos.c
 	data_structures/deque/deque.c
 	data_structures/queue/queue.c
 	data_structures/stack/vector_stack.c
